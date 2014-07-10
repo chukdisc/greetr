@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710141339) do
+ActiveRecord::Schema.define(version: 20140710180426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "greetings", force: true do |t|
+    t.string "sender_id",    null: false
+    t.string "recipient_id", null: false
+    t.text   "body",         null: false
+  end
+
+  add_index "greetings", ["sender_id", "recipient_id", "body"], name: "index_greetings_on_sender_id_and_recipient_id_and_body", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

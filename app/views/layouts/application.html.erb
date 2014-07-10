@@ -4,10 +4,20 @@
   <title>Greetr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="http://js.pusher.com/2.2/pusher.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<section>
+<div class="logout">
+<% if signed_in? %>
+  <p>Welcome, <%= current_user.username %></p>
+<%= button_to "Sign out", :session, method: :delete %>
+</p>
+<% end %>
+</div>
+</section>
 <%= yield %>
 
 </body>

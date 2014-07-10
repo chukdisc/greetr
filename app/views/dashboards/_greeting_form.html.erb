@@ -1,0 +1,8 @@
+<%= form_for @greeting do |form| %>
+  <p>Send
+  <%= form.text_field :body %>
+  to 
+  <%= form.collection_select :recipient_id, @users, :id, :username %>
+  <%= form.submit "Send Greeting!" %>
+  </p>
+<% end %>
